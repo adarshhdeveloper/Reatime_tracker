@@ -20,9 +20,9 @@ if(navigator.geolocation){
 const map = L.map("map").setView([0,0],16)
 
  //ye map dikhane ke liye
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"),{
-    attribution : "Adarsh ke PAPA ka map " // koi bhai name de sakte hii ham 
-}.addTO(map)
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{
+    attribution : "Adarsh ke PAPA ka map " // koi bhai name de sakte hii ham
+}).addTo(map)
 
 //markers
 
@@ -33,7 +33,7 @@ socket.on("receive-location",(data)=>{
     map.setView([latitude , longitude])
 
     if(markers[id]){
-        markers[id].setLetLng([latitude , longitude])
+        markers[id].setLatLng([latitude , longitude])
     }
     else{
         markers[id] = L.marker([latitude , longitude]).addTo(map)
