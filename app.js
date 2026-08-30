@@ -15,7 +15,13 @@ app.use(express.static(path.join(__dirname,"public")))   //usefull for access st
 
 // io handle 
 io.on("connection",(scocket)=>{
-    console.log("Connected")
+    scocket.on("send-location",(data)=>{
+        io.emit("receive-location",{id: scocket.id, ...data}) //data fir se frontend par send kiya 
+    })
+    
+    scocket.on("disconnet",()=>{
+        io.emit("user-disconneted", scocket.id)
+    })
 })
 
 app.get("/",(req,res)=>{
