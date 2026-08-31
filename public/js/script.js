@@ -11,7 +11,7 @@ if(navigator.geolocation){
     },
     {
         enableHighAccuracy : true,
-        timeout:5000,         //every 5 sec me location check 
+        timeout:3000,         //every 5 sec me location check 
         maximumAge:0
     }
 )
